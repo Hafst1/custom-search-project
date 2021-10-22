@@ -1,0 +1,16 @@
+<h2>Myndaleit</h2>
+<form class="search-form" [formGroup]="searchForm">
+  <mat-form-field class="search-input" appearance="outline">
+    <mat-label>Leita</mat-label>
+    <input class="search-input" type="text" matInput formControlName="searchField" (keyup.enter)="getSearchResults($event.target.value)">
+  </mat-form-field>
+</form>
+<div>
+  <div class="container">
+    <div class="image-container" *ngFor="let result of searchResults">
+      <a href="{{ result.link }}" title="{{ result.title }}">
+        <img src="{{ result.imgThumbnail }}" alt="{{ result.title }}">
+      </a>
+    </div>
+  </div>
+</div>
