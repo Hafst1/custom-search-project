@@ -27,20 +27,20 @@ export class DashboardComponent implements OnInit {
     private dashboardService: DashboardService,
   ) { }
 
-  // @HostListener('window:scroll')
-  // onWindowScroll() {
-  //   if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
-  //     if (!this.scrolling && this.isResult) {
-  //       this.scrolling = true;
-  //       setTimeout(function(){
-  //         this.scrolling = false;
-  //       }, 1000);
-  //     }
-  //     this.dashboardService.getSearchData(this.searchString, this.searchResults.length + 1).subscribe(data => {
-  //       this.searchResults = this.searchResults.concat(data.items);
-  //     })
-  //   }
-  // }
+  @HostListener('window:scroll')
+  onWindowScroll() {
+    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+      if (!this.scrolling && this.isResult) {
+        this.scrolling = true;
+        setTimeout(function(){
+          this.scrolling = false;
+        }, 1000);
+      }
+      this.dashboardService.getSearchData(this.searchString, this.searchResults.length + 1).subscribe(data => {
+        this.searchResults = this.searchResults.concat(data.items);
+      })
+    }
+  }
   
   ngOnInit(): void {
     this.createForm();
